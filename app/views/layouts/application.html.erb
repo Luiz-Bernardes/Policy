@@ -10,6 +10,18 @@
   </head>
 
   <body>
+    <% if current_user.present? %>
+
+      <h1>Menu</h1>
+      <ul>
+        <li><%= link_to 'Usuários', users_path %></li>
+        <li><%= link_to "Sair (#{current_user.email})", destroy_user_session_path, method: :delete %></li>
+      </ul>
+
+      <hr>
+
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
