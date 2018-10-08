@@ -22,7 +22,7 @@
 
 * Additional Gems
 
-  Devise
+  Devise, Pundit
 
 # Policy
 

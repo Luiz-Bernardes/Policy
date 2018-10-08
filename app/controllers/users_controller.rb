@@ -13,12 +13,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    if (current_user.admin?) && (current_user.moderator?)
-      render :edit
-    else
-      flash[:error] = "not authorized"
-      redirect_to users_path
-    end
+    authorize @user
   end
 
   def create
@@ -44,14 +39,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if (current_user.admin?) && (current_user.moderator?)
-      @user.destroy
-      respond_to do |format|
-        format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      end
-    else
-      flash[:error] = "not authorized"
-      redirect_to users_path
+    authorize @user
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
     end
   end
 
