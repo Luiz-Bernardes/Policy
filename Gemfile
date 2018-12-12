@@ -35,3 +35,5 @@ group :test do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem "loofah", ">= 2.2.3"
+gem "rack", ">= 2.0.6" 
